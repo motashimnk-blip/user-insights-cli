@@ -67,4 +67,3 @@ console.log(`Total Users: ${totalUsers}`);
 console.log(`Total Posts: ${totalPosts}`);
 console.log(`Average Posts Per User: ${averagePosts}`);
 console.log(`Most Completed Todos: ${mostCompleted.name}`);
-
