@@ -38,3 +38,32 @@ const report = users.map(user => {
     openTodos: openTodos.length
 };
 })
+report.sort((a, b) => {
+    if (b.postCount !== a.postCount) {
+        return b.postCount - a.postCount;
+    }
+
+    return a.name.localeCompare(b.name);
+});
+report.forEach(user => {
+    console.log("----------------------------");
+    console.log(`Name: ${user.name}`);
+    console.log(`Email: ${user.email}`);
+    console.log(`City: ${user.city}`);
+    console.log(`Posts: ${user.postCount}`);
+    console.log(`Completed Todos: ${user.completedTodos}`);
+    console.log(`Open Todos: ${user.openTodos}`);
+});
+const totalUsers = report.length;
+const totalPosts = report.reduce((total, user) => {
+    return total + user.postCount;
+}, 0);
+const averagePosts = totalPosts / totalUsers;
+const mostCompleted = report.reduce((best, user) => {
+    return user.completedTodos > best.completedTodos ? user : best;
+});
+console.log("\n===== Summary =====");
+console.log(`Total Users: ${totalUsers}`);
+console.log(`Total Posts: ${totalPosts}`);
+console.log(`Average Posts Per User: ${averagePosts}`);
+console.log(`Most Completed Todos: ${mostCompleted.name}`);
